@@ -1,5 +1,8 @@
+import os
 import streamlit as st
 import requests
+
+API_URL = os.getenv("API_URL", "http://localhost:8000/predict")
 
 # Page config
 st.set_page_config(
@@ -105,7 +108,7 @@ if st.button("🔍 Predict Churn"):
 
     try:
         response = requests.post(
-            "http://127.0.0.1:8000/predict",
+            API_URL,
             json=payload
         )
 
